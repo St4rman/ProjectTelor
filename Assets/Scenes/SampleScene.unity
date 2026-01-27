@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 223458573}
   - component: {fileID: 223458572}
   - component: {fileID: 223458571}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 1sttwin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 519339082}
   - component: {fileID: 519339081}
   - component: {fileID: 519339080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 611315299}
   - component: {fileID: 611315298}
   - component: {fileID: 611315297}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,6 +871,7 @@ GameObject:
   - component: {fileID: 622760727}
   - component: {fileID: 622760726}
   - component: {fileID: 622760725}
+  - component: {fileID: 622760728}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -904,10 +905,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 10
+  m_Acceleration: 100000000
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -928,6 +929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0767924ce9e89ae4db5001799de4979f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  WalkableLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  TurnSpeed: 10
+  WalkableDistance: 30
 --- !u!114 &622760727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,7 +960,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 622760728}
+        m_TargetAssemblyTypeName: InputReader, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d716d269-1d67-4910-ab45-857d0d81368d
     m_ActionName: 'Main/Move[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -962,6 +980,18 @@ MonoBehaviour:
   m_DefaultActionMap: Main
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &622760728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622760722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26aeedf225aabe947bf81b20d4498f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputReader
 --- !u!1 &709149418
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +1004,7 @@ GameObject:
   - component: {fileID: 709149422}
   - component: {fileID: 709149421}
   - component: {fileID: 709149420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1164,7 @@ GameObject:
   - component: {fileID: 893305007}
   - component: {fileID: 893305006}
   - component: {fileID: 893305005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1369,7 +1399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1561630694}
   - component: {fileID: 1561630695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1441,7 +1471,7 @@ GameObject:
   - component: {fileID: 1596368375}
   - component: {fileID: 1596368374}
   - component: {fileID: 1596368373}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 2ndTwin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1665,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
