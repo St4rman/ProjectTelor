@@ -935,7 +935,7 @@ MonoBehaviour:
     m_Bits: 512
   TurnSpeed: 10
   WalkableDistance: 30
-  PointerMeshClass: {fileID: 5717872494684233489, guid: 7a138200f8e884c4abf93ca31fee1ba8, type: 3}
+  PointerMeshClass: {fileID: 5555414922903499343, guid: 8133eb72cab777f4790a8783ff842d21, type: 3}
 --- !u!114 &622760727
 MonoBehaviour:
   m_ObjectHideFlags: 0

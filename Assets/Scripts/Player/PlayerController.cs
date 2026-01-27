@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             NavMesh.CalculatePath(transform.position, TargetLocation.point, NavMesh.AllAreas, Path);
         
+        
 
             float CurrentTraveledLen = 0;
             Vector3 FinalLoc = new Vector3();
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(PointerMesh);
         }
-        PointerMesh = Instantiate(PointerMeshClass, SpawnLocation, PointerMeshClass.transform.rotation);
+        PointerMesh = Instantiate(PointerMeshClass, SpawnLocation + new Vector3(0, 0.1f, 0), PointerMeshClass.transform.rotation);
 
     }
 
