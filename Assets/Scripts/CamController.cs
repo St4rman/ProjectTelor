@@ -10,10 +10,10 @@ public class CamController : MonoBehaviour
     public float rotateSpeed = 0.25f;
     public float runningSpeed = 30f;
     public float walkingSpeed = 15f;
-    [SerializeField] private float _fieldOfViewMin = 10;
-    [SerializeField] private float _fieldOfViewMax = 50;
-    [SerializeField] private float _followOffsetwMin = 5f;
-    [SerializeField] private float _followOffsetwMax = 50f;
+    [SerializeField] private float fieldOfViewMin = 10;
+    [SerializeField] private float fieldOfViewMax = 50;
+    [SerializeField] private float followOffsetwMin = 5f;
+    [SerializeField] private float followOffsetwMax = 50f;
 
     private float speed;
     private bool dragPanMoveActive;
@@ -52,7 +52,7 @@ public class CamController : MonoBehaviour
 
     private void HandleCameraRotation()
     {
-        float rotateDir = InputManager.Rotation.x;
+        float rotateDir = InputManager.Instance.GetRotation().x;
 
         if (Input.GetMouseButtonDown(2))
         {
@@ -84,7 +84,7 @@ public class CamController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && Input.mouseScrollDelta.y < 0)
             targetFieldOfView += 5;
 
-        targetFieldOfView = Mathf.Clamp(targetFieldOfView, _fieldOfViewMin, _fieldOfViewMax);
+        targetFieldOfView = Mathf.Clamp(targetFieldOfView, fieldOfViewMin, fieldOfViewMax);
 
         float zoomSpeed = 10f;
         virtualCamera.Lens.FieldOfView =
@@ -101,11 +101,11 @@ public class CamController : MonoBehaviour
         if (!Input.GetKey(KeyCode.LeftControl) && Input.mouseScrollDelta.y < 0)
             followOffset += zoomDir * zoomAmount;
 
-        if (followOffset.magnitude < _followOffsetwMin)
-            followOffset = zoomDir * _followOffsetwMin;
+        if (followOffset.magnitude < followOffsetwMin)
+            followOffset = zoomDir * followOffsetwMin;
 
-        if (followOffset.magnitude > _followOffsetwMax)
-            followOffset = zoomDir * _followOffsetwMax;
+        if (followOffset.magnitude > followOffsetwMax)
+            followOffset = zoomDir * followOffsetwMax;
 
         float zoomSpeed = 20f;
         virCamFollow.FollowOffset =
@@ -121,7 +121,7 @@ public class CamController : MonoBehaviour
         if (!Input.GetKey(KeyCode.LeftControl) && Input.mouseScrollDelta.y < 0)
             followOffset.y += zoomAmount;
 
-        followOffset.y = Mathf.Clamp(followOffset.y, _followOffsetwMin, _followOffsetwMax);
+        followOffset.y = Mathf.Clamp(followOffset.y, followOffsetwMin, followOffsetwMax);
 
         float zoomSpeed = 20f;
         virCamFollow.FollowOffset =

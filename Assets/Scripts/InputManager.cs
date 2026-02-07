@@ -7,11 +7,7 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
-    public static Vector2 Rotation;
-    public static Vector3 Movement;
-    public static bool MovedPlayer;
-    public static bool Sprint;
-    private InputActions inputActions;
+    InputActions inputActions;
 
     private void Awake()
     {
@@ -22,17 +18,22 @@ public class InputManager : MonoBehaviour
 
     public Vector2 GetCamMovement()
     {
-        return inputActions.Player.Move.ReadValue<Vector2>();
+        return inputActions.Cam.Move.ReadValue<Vector2>();
     }
 
     public Vector2 GetRotation()
     {
-        return inputActions.Player.Rotate.ReadValue<Vector2>();
+        return inputActions.Cam.Rotate.ReadValue<Vector2>();
     }
 
     public bool GetSprint()
     {
-        return inputActions.Player.Sprint.IsInProgress();
+        return inputActions.Cam.Sprint.IsInProgress();
+    }
+
+    public bool GetFinishTurn()
+    {
+        return inputActions.Player.NextTurn.IsPressed();
     }
 
 }
